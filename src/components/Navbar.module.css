@@ -1,0 +1,21 @@
+.nav {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    margin-top: 20px;
+    border-top: 1px solid #232323;
+    border-bottom: 1px solid #232323;
+}
+
+.links {
+    grid-column: 2;
+    display: flex;
+}
+
+.linkStyle {
+    display: inline-block;
+    color: var(--color-strong-orange);
+    text-decoration: none;
+    padding: 20px;
+    border-left: 1px solid #232323;
+}
