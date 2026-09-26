@@ -1,0 +1,91 @@
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 120px;
+    border-top: 1px solid #232323;
+    padding: 52px 0 60px 0;
+    width: 100%;
+}
+
+/* Brand / Logo Title */
+.brandWrapper {
+    margin-bottom: 32px;
+}
+
+.brand {
+    color: var(--color-text-day);
+    text-decoration: none;
+}
+
+/* Nav links: clean, unboxed list */
+.navMenu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 36px;
+    margin-bottom: 36px;
+    flex-wrap: wrap;
+}
+
+.navLink {
+    color: var(--color-text-day);
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.navLink:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+/* Social icons */
+.socialBar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 36px;
+}
+
+.socialLink {
+    color: var(--color-text-day);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.socialLink:hover {
+    opacity: 0.6;
+    transform: translateY(-2px);
+}
+
+/* Copyright line */
+.copyright p {
+    font-size: 0.85rem;
+    color: #666666;
+    margin: 0;
+}
+
+/* Responsive adjustments (< 768px) */
+@media (max-width: 768px) {
+    .footer {
+        margin-top: 80px;
+        padding: 36px 0 40px 0;
+    }
+
+    /* Stack links vertically */
+    .navMenu {
+        flex-direction: column;
+        gap: 16px;
+        margin-bottom: 28px;
+    }
+
+    .socialBar {
+        margin-bottom: 28px;
+        gap: 20px;
+    }
+}

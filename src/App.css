@@ -16,7 +16,7 @@
 
 * {
     margin: 0;
-    padding: 0;
+    padding: 0px 0px;
 }
 
 body{
@@ -26,6 +26,8 @@ body{
     color: var(--color-text-day);
     font-size: 1.2rem;
 }
+
+
 
 h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
@@ -49,7 +51,3 @@ h6 { font-size: 1rem;    line-height: 1.5;  letter-spacing: 0.06em; text-transfo
     h5 { font-size: 1.4rem;   line-height: 1.4;  }
     h6 { font-size: 1.15rem;  line-height: 1.45; letter-spacing: 0.08em; }
 }                   
-
-.title{
-    font-family: var(--font-serif)
-}

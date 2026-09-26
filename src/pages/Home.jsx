@@ -1,8 +1,8 @@
 export default function Home() {
     return(
-        <div>
-            <h1>Zack Yu</h1>
-            <h2>Curriculum designer, specialized in civics</h2>
-        </div>
+        <>
+            <h1 style={{fontFamily: "var(--font-serif)", textAlign: "center"}} >人、社會、科技物的遐思</h1>
+            <p style={{textAlign: "center"}} ></p>
+        </>
     );
 }
