@@ -1,33 +1,117 @@
+import { useState, useRef, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './Footer.module.css';
 
 export default function Footer() {
+  const [copied, setCopied] = useState(false);
+  const timeoutRef = useRef(null);
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, []);
+
+  const handleCopyEmail = async () => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+
+    const email = 'zackyu.check@gmail.com';
+    let success = false;
+
+    if (navigator?.clipboard?.writeText) {
+      try {
+        await navigator.clipboard.writeText(email);
+        success = true;
+      } catch {
+        success = false;
+      }
+    }
+
+    if (!success) {
+      try {
+        const textArea = document.createElement('textarea');
+        textArea.value = email;
+        textArea.style.position = 'fixed';
+        textArea.style.left = '-999999px';
+        textArea.style.top = '-999999px';
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+      } catch (err) {
+        console.error('Copy fallback failed:', err);
+      }
+    }
+
+    setCopied(true);
+    timeoutRef.current = setTimeout(() => {
+      setCopied(false);
+    }, 3000);
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+  };
+
   return (
     <footer className={styles.footer}>
       {/* Brand / Logo */}
       <div className={styles.brandWrapper}>
-        <NavLink to="/" className={styles.brand}> 
+        <NavLink to="/" className={styles.brand} onClick={scrollToTop}> 
           <img src='./images/mylogo_left_right_footer.webp'/>
         </NavLink>
       </div>
 
       {/* Navigation Menu */}
       <nav className={styles.navMenu} aria-label="Footer Menu">
-        <NavLink to="/" className={styles.navLink}>
+        <NavLink to="/" className={styles.navLink} onClick={scrollToTop}>
           <h5>Home</h5>
         </NavLink>
-        <NavLink to="/blogs" className={styles.navLink}>
+        <NavLink to="/blogs" className={styles.navLink} onClick={scrollToTop}>
           <h5>Blogs</h5>
         </NavLink>
-        <NavLink to="/projects" className={styles.navLink}>
+        <NavLink to="/projects" className={styles.navLink} onClick={scrollToTop}>
           <h5>Projects</h5>
         </NavLink>
-        <NavLink to="/about" className={styles.navLink}>
+        <NavLink to="/about" className={styles.navLink} onClick={scrollToTop}>
           <h5>About</h5>
         </NavLink>
       </nav>
 
       <hr className={styles.divider}/>
+
+      {/* Email Address */}
+      <div className={styles.emailWrapper}>
+        {copied ? (
+          <div className={styles.emailCopiedBox} role="status">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className={styles.checkIcon}
+            >
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+            <span>Email Copied</span>
+          </div>
+        ) : (
+          <button
+            type="button"
+            onClick={handleCopyEmail}
+            className={styles.email}
+            title="Click to copy email address"
+          >
+            zackyu.check@gmail.com
+          </button>
+        )}
+      </div>
 
       {/* Social Media Bar (GitHub and YouTube) */}
       <div className={styles.socialBar}>

@@ -5,7 +5,7 @@
     text-align: center;
     margin-top: 120px;
     border-top: 1px solid #232323;
-    padding: 52px 0 60px 0;
+    padding: 48px 0 48px 0;
     width: 100%;
 
     /* Background image settings */
@@ -66,6 +66,73 @@
     margin-bottom: 36px;
 }
 
+/* Email Address */
+.emailWrapper {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.email {
+    margin-bottom: 0;
+    font-size: 18px;
+    font-family: inherit;
+    text-decoration: underline;
+    text-underline-offset: 6px;
+    font-weight: 400;
+    color: inherit;
+    background: none;
+    border: none;
+    padding: 0px 6px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: color 0.2s ease, opacity 0.2s ease;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.email:hover {
+    color: var(--color-strong-red);
+}
+
+.emailCopiedBox {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: var(--color-strong-red);
+    color: var(--color-bg-day);
+    padding: 16px;
+    padding-top: 4px;
+    padding-bottom: 8px;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 0;
+    user-select: none;
+    -webkit-user-select: none;
+    box-sizing: border-box;
+    animation: fadeIn 0.2s ease;
+}
+
+.checkIcon {
+    stroke: currentColor;
+    /* flex-shrink: 0; */
+    /* Flips horizontally (scaleX) and moves it down (translateY) */
+    transform: scaleX(-1) translateY(2px);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 /* Social icons */
 .socialBar {
     display: flex;
@@ -90,8 +157,8 @@
 
 /* Copyright line */
 .copyright p {
-    font-size: 0.85rem;
-    color: var(--color-text-day);
+    font-size: 16px;
+    color: var(--color-text-light-gray);
     margin: 0;
 }
 

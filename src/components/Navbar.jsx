@@ -46,6 +46,11 @@ export default function Navbar() {
   };                                                                                         
 }, []);    
 
+  const handleNavClick = () => {
+    setMenuOpen(false);
+    window.scrollTo(0, 0);
+  };
+
   return (
     <nav className={styles.nav}>
 
@@ -53,7 +58,7 @@ export default function Navbar() {
       <div>
         <Link
           to="/"
-          onClick={() => setMenuOpen(false)}
+          onClick={handleNavClick}
           className={styles.logoLink}
           >
           <img src="./images/mylogo_left_right.webp" alt="Logo" height={75} />
@@ -62,13 +67,13 @@ export default function Navbar() {
 
       {/* Desktop Navigation Links */}
       <div className={styles.nav_bar}>
-        <Link to="/blogs" className={styles.linkStyle} onClick={() => setMenuOpen(false)}>
+        <Link to="/blogs" className={styles.linkStyle} onClick={handleNavClick}>
           <h5>Blogs</h5>
         </Link>
-        <Link to="/projects" className={styles.linkStyle} onClick={() => setMenuOpen(false)}>
+        <Link to="/projects" className={styles.linkStyle} onClick={handleNavClick}>
           <h5>Projects</h5>
         </Link>
-        <Link to="/about" className={styles.linkStyle} onClick={() => setMenuOpen(false)}>
+        <Link to="/about" className={styles.linkStyle} onClick={handleNavClick}>
           <h5>About</h5>
         </Link>
       </div>
@@ -87,19 +92,20 @@ export default function Navbar() {
       </button>
 
       {/* Mobile Dropdown Menu */}
-      {menuOpen && (
-        <div className={styles.mobile_menu} ref={menu_ref}>
-          <NavLink to="/blogs" className={styles.mobileLink} onClick={() => setMenuOpen(false)}>
-            <h4>Blogs</h4>
-          </NavLink>
-          <NavLink to="/projects" className={styles.mobileLink} onClick={() => setMenuOpen(false)}>
-            <h4>Projects</h4>
-          </NavLink>
-          <NavLink to="/about" className={styles.mobileLink} onClick={() => setMenuOpen(false)}>
-            <h4>About</h4>
-          </NavLink>
-        </div>
-      )}
+      <div
+        className={`${styles.mobile_menu} ${menuOpen ? styles.is_open : ''}`}
+        ref={menu_ref}
+      >
+        <NavLink to="/blogs" className={styles.mobileLink} onClick={handleNavClick}>
+          <h4>Blogs</h4>
+        </NavLink>
+        <NavLink to="/projects" className={styles.mobileLink} onClick={handleNavClick}>
+          <h4>Projects</h4>
+        </NavLink>
+        <NavLink to="/about" className={styles.mobileLink} onClick={handleNavClick}>
+          <h4>About</h4>
+        </NavLink>
+      </div>
     </nav>
   );
 }
