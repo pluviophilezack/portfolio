@@ -7,6 +7,12 @@
     border-top: 1px solid #232323;
     padding: 52px 0 60px 0;
     width: 100%;
+
+    /* Background image settings */
+    background-image: url('/images/background.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 /* Brand / Logo Title */
@@ -17,6 +23,19 @@
 .brand {
     color: var(--color-text-day);
     text-decoration: none;
+}
+
+.brand img {
+    width: 20%;
+    height: auto;
+    border-radius: 18px;
+}
+
+/* Responsive adjustments (< 768px) */
+@media (max-width: 768px) {
+    .brand img {
+        width: 32%;
+    }
 }
 
 /* Nav links: clean, unboxed list */
@@ -30,14 +49,21 @@
 }
 
 .navLink {
-    color: var(--color-text-day);
+    color: var(--color-strong-orange);
     text-decoration: none;
     transition: all 0.2s ease;
 }
 
 .navLink:hover {
-    text-decoration: underline;
-    text-underline-offset: 4px;
+    color: var(--color-strong-red)
+}
+
+/* Divider */
+.divider {
+    width: 80%;
+    border-color: var(--color-text-day);
+    border-top: 2px;
+    margin-bottom: 36px;
 }
 
 /* Social icons */
@@ -59,14 +85,13 @@
 }
 
 .socialLink:hover {
-    opacity: 0.6;
-    transform: translateY(-2px);
+    color: var(--color-strong-red);
 }
 
 /* Copyright line */
 .copyright p {
     font-size: 0.85rem;
-    color: #666666;
+    color: var(--color-text-day);
     margin: 0;
 }
 

@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import styles from './Navbar.module.css';
 import { useState, useEffect, useRef } from "react";
 
@@ -30,30 +30,47 @@ export default function Navbar() {
     };
   }, [menuOpen]);
 
+  useEffect(() => {                                                                            
+  const mediaQuery = window.matchMedia('(min-width: 769px)');                                
+                                                                                              
+  const handleMediaChange = (e) => {                                                         
+    if (e.matches) {                                                                         
+      setMenuOpen(false);                                                                    
+    }                                                                                        
+  };                                                                                         
+                                                                                              
+  mediaQuery.addEventListener('change', handleMediaChange);                                  
+                                                                                              
+  return () => {                                                                             
+    mediaQuery.removeEventListener('change', handleMediaChange);                             
+  };                                                                                         
+}, []);    
+
   return (
     <nav className={styles.nav}>
+
       {/* Brand */}
       <div>
-        <NavLink
+        <Link
           to="/"
-          className={styles.brandLink}
           onClick={() => setMenuOpen(false)}
-        >
-          <h4>Pluviophile Zack</h4>
-        </NavLink>
+          className={styles.logoLink}
+          >
+          <img src="./images/mylogo_left_right.webp" alt="Logo" height={75} />
+        </Link>
       </div>
 
       {/* Desktop Navigation Links */}
       <div className={styles.nav_bar}>
-        <NavLink to="/blogs" className={styles.linkStyle} onClick={() => setMenuOpen(false)}>
+        <Link to="/blogs" className={styles.linkStyle} onClick={() => setMenuOpen(false)}>
           <h5>Blogs</h5>
-        </NavLink>
-        <NavLink to="/projects" className={styles.linkStyle} onClick={() => setMenuOpen(false)}>
+        </Link>
+        <Link to="/projects" className={styles.linkStyle} onClick={() => setMenuOpen(false)}>
           <h5>Projects</h5>
-        </NavLink>
-        <NavLink to="/about" className={styles.linkStyle} onClick={() => setMenuOpen(false)}>
+        </Link>
+        <Link to="/about" className={styles.linkStyle} onClick={() => setMenuOpen(false)}>
           <h5>About</h5>
-        </NavLink>
+        </Link>
       </div>
 
       {/* Mobile Hamburger Button */}

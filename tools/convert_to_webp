@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Directory of public/images
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../public/images" && pwd)"
+
+echo "Converting images in $DIR to WebP..."
+
+if ! command -v cwebp &> /dev/null; then
+  echo "Error: cwebp is not installed. Please install it (e.g., brew install webp)."
+  exit 1
+fi
+
+shopt -s nullglob
+images=("$DIR"/*.png "$DIR"/*.jpg "$DIR"/*.jpeg "$DIR"/*.PNG "$DIR"/*.JPG "$DIR"/*.JPEG)
+
+for img in "${images[@]}"; do
+  ext="${img##*.}"
+  base="${img%.*}"
+  target="${base}.webp"
+  
+  echo "Converting $(basename "$img") -> $(basename "$target")..."
+  cwebp -q 80 "$img" -o "$target"
+done
+
+echo "Done converting images to WebP!"
