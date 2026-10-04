@@ -1,7 +1,9 @@
+import styles from "./Box.module.css";
+
 export default function Box({ children }) {
-    return(
-        <div style={{padding: "26px 40px"}}>
+    return (
+        <div className={styles.box}>
             {children}
         </div>
-    )
+    );
 }

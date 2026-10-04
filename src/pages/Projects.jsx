@@ -1,7 +1,7 @@
 export default function Projects() {
     return(
         <div>
-            <h1>Project</h1>
+            <h1>專案作品集</h1>
         </div>
     )
 }

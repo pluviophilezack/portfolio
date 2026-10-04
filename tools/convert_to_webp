@@ -1,26 +1,41 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Directory of public/images
-DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../public/images" && pwd)"
-
-echo "Converting images in $DIR to WebP..."
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+TARGET_DIRS=(
+  "$ROOT_DIR/data/blogs"
+  "$ROOT_DIR/public/images"
+)
 
 if ! command -v cwebp &> /dev/null; then
   echo "Error: cwebp is not installed. Please install it (e.g., brew install webp)."
   exit 1
 fi
 
-shopt -s nullglob
-images=("$DIR"/*.png "$DIR"/*.jpg "$DIR"/*.jpeg "$DIR"/*.PNG "$DIR"/*.JPG "$DIR"/*.JPEG)
+shopt -s nullglob nocaseglob
 
-for img in "${images[@]}"; do
-  ext="${img##*.}"
-  base="${img%.*}"
-  target="${base}.webp"
-  
-  echo "Converting $(basename "$img") -> $(basename "$target")..."
-  cwebp -q 80 "$img" -o "$target"
+for dir in "${TARGET_DIRS[@]}"; do
+  if [ ! -d "$dir" ]; then
+    echo "Directory not found, skipping: $dir"
+    continue
+  fi
+
+  echo "Scanning $dir for images to convert..."
+  images=("$dir"/*.png "$dir"/*.jpg "$dir"/*.jpeg)
+
+  if [ ${#images[@]} -eq 0 ]; then
+    echo "No PNG/JPG images found in $dir."
+    continue
+  fi
+
+  for img in "${images[@]}"; do
+    base="${img%.*}"
+    target="${base}.webp"
+
+    echo "Converting $(basename "$img") -> $(basename "$target")..."
+    cwebp -q 80 "$img" -o "$target"
+    rm -f "$img"
+  done
 done
 
-echo "Done converting images to WebP!"
+echo "Done converting images to WebP and removing original files!"

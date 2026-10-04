@@ -19,6 +19,14 @@
     align-items: center;
 }
 
+.linkStyle h6{
+    font-weight: 500;
+}
+
+.mobile_menu h6 {
+    font-weight: 500;
+}
+
 .logoLink {
     display: flex;
     padding-left: 22px;
@@ -32,7 +40,7 @@
     display: inline-block;
     color: var(--color-strong-orange);
     text-decoration: none;
-    padding: 22px;
+    padding: 25px;
     border-left: 1px solid #232323;
     transition: all 0.2s ease;
 }
@@ -48,7 +56,7 @@
     border-left: 1px solid #232323;
     cursor: pointer;
     color: var(--color-text-day, #232323);
-    padding: 20px;
+    padding: 22px;
 }
 
 .menu_icon svg {

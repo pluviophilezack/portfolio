@@ -1,0 +1,187 @@
+/* Container */
+.container {
+  width: 100%;
+}
+
+/* Category Filter Tags / Label List */
+.label_list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 1.5rem 0 2rem;
+}
+
+.label_btn {
+  background: transparent;
+  border: 1px solid black;
+  border-radius: 0;
+  color: var(--color-text-day);
+  padding: 6px 16px;
+  font-size: 0.95rem;
+  font-family: var(--font-sans, "Noto Sans TC", sans-serif);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.label_btn:hover {
+  background-color: var(--color-strong-red);
+  border: 1px solid var(--color-strong-red);
+  color: var(--color-text-night);
+}
+
+.label_btn_active {
+  background-color: var(--color-strong-red);
+  border: 1px solid var(--color-strong-red);
+  color: var(--color-text-night);
+}
+
+/* Post Stack: Original 2-column Grid */
+.post_stack {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 60px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@media (max-width: 1024px) {
+  .post_stack {
+    gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .post_stack {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Post Link wrapper */
+.post_link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+/* Original Post Card */
+.post {
+  width: 100%;
+  border: 1px black solid;
+  border-radius: 0;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.post:hover {
+  border-color: var(--color-strong-red);
+  box-shadow: 0 0 0 2px var(--color-strong-red);
+}
+
+/* Post Image */
+.post_img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  max-height: 280px;
+  object-fit: cover;
+  display: block;
+  border-bottom: 1px black solid;
+  border-radius: 0;
+}
+
+/* Post Text Wrapper */
+.post_text_wrapper {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+  background-image: url('/images/background.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.title {
+  margin-bottom: 16px;
+}
+
+.title h5 {
+  font-size: 1.4rem;
+  line-height: 1.4;
+  font-family: var(--font-serif, "Noto Serif TC", serif);
+  font-weight: 600;
+  color: var(--color-text-day, #313131);
+}
+
+@media (max-width: 768px) {
+  .title h5 {
+    font-size: 1.2rem;
+    line-height: 1.45;
+  }
+}
+
+/* Post Footer: Label on left, Date on right */
+.post_footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  gap: 12px;
+}
+
+.post_label {
+  border: 1px solid black;
+  border-radius: 0;
+  padding: 2px 8px;
+  font-size: 0.95rem;
+  color: var(--color-text-day, #313131);
+  display: inline-block;
+  line-height: 1.4;
+  background-color: transparent;
+}
+
+.date {
+  text-align: right;
+  margin-left: auto;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: var(--color-text-gray, #595959);
+}
+
+/* Pagination: More Posts (Border 1px solid black, no border-radius) */
+.tag {
+  display: block;
+  justify-content: center;
+  margin-top: 3.5rem;
+}
+
+.switch_page {
+  background-color: transparent;
+  color: var(--color-text-day);
+  border: 1px solid black;
+  border-radius: 0;
+  padding: 6px 16px;
+  font-size: 0.95rem;
+  font-family: var(--font-sans, "Noto Sans TC", sans-serif);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.switch_page:hover {
+  background-color: var(--color-strong-red);
+  border: 1px solid var(--color-strong-red);
+  color: var(--color-text-night);
+}
+
+.space {
+  width: 100%;
+  height: 20px;
+}

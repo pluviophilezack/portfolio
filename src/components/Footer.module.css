@@ -34,7 +34,7 @@
 /* Responsive adjustments (< 768px) */
 @media (max-width: 768px) {
     .brand img {
-        width: 32%;
+        width: 40%;
     }
 }
 
@@ -56,6 +56,11 @@
 
 .navLink:hover {
     color: var(--color-strong-red)
+}
+
+.navLink h5{
+    font: var(--font-sans);
+    font-weight: 500;
 }
 
 /* Divider */

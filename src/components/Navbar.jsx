@@ -61,20 +61,20 @@ export default function Navbar() {
           onClick={handleNavClick}
           className={styles.logoLink}
           >
-          <img src="./images/mylogo_left_right.webp" alt="Logo" height={75} />
+          <img src="/images/mylogo_left_right.webp" alt="Logo" height={75} />
         </Link>
       </div>
 
       {/* Desktop Navigation Links */}
       <div className={styles.nav_bar}>
         <Link to="/blogs" className={styles.linkStyle} onClick={handleNavClick}>
-          <h5>Blogs</h5>
+          <h6>Blogs</h6>
         </Link>
         <Link to="/projects" className={styles.linkStyle} onClick={handleNavClick}>
-          <h5>Projects</h5>
+          <h6>Projects</h6>
         </Link>
         <Link to="/about" className={styles.linkStyle} onClick={handleNavClick}>
-          <h5>About</h5>
+          <h6>About</h6>
         </Link>
       </div>
 
@@ -97,13 +97,13 @@ export default function Navbar() {
         ref={menu_ref}
       >
         <NavLink to="/blogs" className={styles.mobileLink} onClick={handleNavClick}>
-          <h4>Blogs</h4>
+          <h6>Blogs</h6>
         </NavLink>
         <NavLink to="/projects" className={styles.mobileLink} onClick={handleNavClick}>
-          <h4>Projects</h4>
+          <h6>Projects</h6>
         </NavLink>
         <NavLink to="/about" className={styles.mobileLink} onClick={handleNavClick}>
-          <h4>About</h4>
+          <h6>About</h6>
         </NavLink>
       </div>
     </nav>

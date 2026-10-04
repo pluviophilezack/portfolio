@@ -3,7 +3,7 @@
     --color-bg-day: #f5f5f5;
     --color-text-day: #313131;
     --color-text-gray: #595959;
-    --color-text-light-gray: #767676;
+    --color-text-light-gray: #ababab;
     --color-strong-orange:#d58936;
     --color-strong-green: #648767;
     /* --color-strong-red: #b75d69; */
@@ -31,26 +31,21 @@ body{
 }
 
 
-
-h1, h2, h3, h4, h5, h6 {
-    font-weight: 500;
-}
-
 /* Base: Mobile phone sizes (< 768px) */
-h1 { font-size: 2.75rem; line-height: 1.25; }
-h2 { font-size: 2.25rem; line-height: 1.3;  }
-h3 { font-size: 1.75rem; line-height: 1.35; }
-h4 { font-size: 1.4rem;  line-height: 1.4;  }
-h5 { font-size: 1.2rem;  line-height: 1.45; }
-h6 { font-size: 1rem;    line-height: 1.5;  letter-spacing: 0.06em; text-transform: uppercase; }
+h1 { font-size: 2.0rem; line-height: 1.25; font-family: var(--font-serif); font-weight: 700;}
+h2 { font-size: 1.8rem; line-height: 1.3;  font-family: var(--font-serif); font-weight: 700;}
+h3 { font-size: 1.6rem; line-height: 1.35; font-family: var(--font-serif); font-weight: 600;}
+h4 { font-size: 1.4rem;  line-height: 1.4; font-family: var(--font-serif); font-weight: 600;}
+h5 { font-size: 1.2rem;  line-height: 1.45; font-family: var(--font-serif); font-weight: 600;}
+h6 { font-size: 1rem;    line-height: 1.45; font-weight: 300;}
 
 /* Computer / Tablet sizes (>= 768px) */
 @media (min-width: 768px) {
     body{ font-size: 1.4rem}
-    h1 { font-size: 4.5rem;   line-height: 1.2;  }
-    h2 { font-size: 3.25rem;  line-height: 1.25; }
-    h3 { font-size: 2.5rem;   line-height: 1.3;  }
-    h4 { font-size: 1.75rem;  line-height: 1.35; }
-    h5 { font-size: 1.4rem;   line-height: 1.4;  }
-    h6 { font-size: 1.15rem;  line-height: 1.45; letter-spacing: 0.08em; }
+    h1 { font-size: 3.25rem;   line-height: 1.2;  font-family: var(--font-serif); font-weight: 700;}
+    h2 { font-size: 2.75rem;  line-height: 1.25; font-family: var(--font-serif); font-weight: 700;}
+    h3 { font-size: 2.25rem;   line-height: 1.3;  font-family: var(--font-serif); font-weight: 600;}
+    h4 { font-size: 1.75rem;  line-height: 1.35;  font-family: var(--font-serif); font-weight: 600;}
+    h5 { font-size: 1.4rem;   line-height: 1.4;  font-family: var(--font-serif); font-weight: 600;}
+    h6 { font-size: 1.15rem;  line-height: 1.4; font-weight: 300;}
 }                   

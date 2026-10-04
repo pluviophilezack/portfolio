@@ -59,7 +59,7 @@ export default function Footer() {
       {/* Brand / Logo */}
       <div className={styles.brandWrapper}>
         <NavLink to="/" className={styles.brand} onClick={scrollToTop}> 
-          <img src='./images/mylogo_left_right_footer.webp'/>
+          <img src="/images/mylogo_left_right_footer.webp" alt="Logo" />
         </NavLink>
       </div>
 
