@@ -61,7 +61,7 @@ export default function Blog() {
 
   return (
     <div className={styles.container}>
-      <h3>手打的文字，不假人工智慧之手</h3>
+      <h3>隨筆</h3>
       {/* Category Labels (保留原先 label_list 結構) */}
       {categories.length > 1 && (
         <div className={styles.label_list}>
