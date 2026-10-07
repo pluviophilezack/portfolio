@@ -1,7 +1,7 @@
 ---
 title: 我們想要什麼？
 date: 2025-03-13
-category: 隨筆短文
+category: 芸帙手記
 # 之後放入blog.jsx的摘要
 summary: 
 ---
@@ -9,4 +9,4 @@ summary:
 
 有一點需特別注意，此本書的個案都是在西方文化下成長的人，作者照見的某些「需求」，不見得合於我們的文化，硬是將書中指出的需求套用在個人經驗，很是彆扭。那些需求也許始終不在東亞、華人、台灣的文化中。
 
-分享筆者去年舉辦讀書會設計的簡報與討論問題：[https://canva.link/si3ix7sdoruesz7](https://canva.link/si3ix7sdoruesz7) 若你有幸讀起這本書，不妨也與你身旁的人一起討論、發現內在渴望。
+分享筆者去年舉辦讀書會設計的簡報與討論問題：[https://canva.link/si3ix7sdoruesz7](https://canva.link/si3ix7sdoruesz7) 若有幸讀起這本書，不妨也與身旁的人一起討論、探索內在渴望。

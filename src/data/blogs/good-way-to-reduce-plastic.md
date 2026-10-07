@@ -1,7 +1,7 @@
 ---
 title: 減塑妙招
 date: 2022-06-23
-category: 隨筆短文
+category: 字絮
 # 之後放入blog.jsx的摘要
 summary: 
 ---
