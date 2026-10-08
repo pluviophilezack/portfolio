@@ -70,7 +70,7 @@
   border: 1px black solid;
   border-radius: 0;
   box-sizing: border-box;
-  background-color: #ffffff;
+  background-color: var(--color-bg-day);
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -100,10 +100,10 @@
   flex-direction: column;
   flex-grow: 1;
   justify-content: space-between;
-  background-image: url('/images/background.webp');
+  /* background-image: url('/images/background.webp');
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
 }
 
 .title {
