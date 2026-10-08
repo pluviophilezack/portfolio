@@ -33,7 +33,7 @@ export function parseProjectMarkdown(rawContent = '', filePath = '', imageMap = 
           else if (key === 'category' || key === 'tag' || key === 'label') category = val;
           else if (key === 'description' || key === 'summary' || key === 'brief') description = val;
           else if (key === 'cover' || key === 'image') cover = val;
-          else if (key === 'externalurl' || key === 'link' || key === 'external_url') externalUrl = val;
+          else if (key === 'external_link' || key === 'externallink' || key === 'externalurl' || key === 'link' || key === 'external_url') externalUrl = val;
           else if (key === 'link_describe' || key === 'linkdescribe' || key === 'link_description') linkDescribe = val;
         }
       }
