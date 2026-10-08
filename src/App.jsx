@@ -6,6 +6,7 @@ import Box from './components/Box';
 import Home from './pages/Home';
 import About from './pages/About';
 import Projects from './pages/Projects';
+import ProjectColumn from './pages/ProjectColumn';
 import Blog from './pages/Blog';
 import BlogColumn from './pages/BlogColumn';
 
@@ -18,6 +19,8 @@ function App() {
         <Route path="/" element={<Box><Home /></Box>} />
         <Route path="/about" element={<Box><About /></Box>} />
         <Route path="/projects" element={<Box><Projects /></Box>} />
+        <Route path="/projects/:slug" element={<Box><ProjectColumn /></Box>} />
+        <Route path="/project/:slug" element={<Box><ProjectColumn /></Box>} />
         <Route path="/blogs" element={<Box><Blog /></Box>} />
         <Route path="/blogs/:slug" element={<Box><BlogColumn /></Box>} />
         <Route path="/blog/:slug" element={<Box><BlogColumn /></Box>} />
