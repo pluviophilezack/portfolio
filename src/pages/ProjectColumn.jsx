@@ -130,9 +130,6 @@ export default function ProjectColumn() {
 
         {/* Content */}
         <article className={style.markdown}>
-          {currentProject.description && (
-            <p>{currentProject.description}</p>
-          )}
           {currentProject.body && (
             <ReactMarkdown>{currentProject.body}</ReactMarkdown>
           )}

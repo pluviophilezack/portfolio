@@ -116,6 +116,7 @@
   font-family: var(--font-serif, "Noto Serif TC", serif);
   font-weight: 600;
   color: var(--color-text-day, #313131);
+  transition: color 0.2s ease;
 }
 
 @media (max-width: 768px) {
@@ -123,6 +124,10 @@
     font-size: 1.2rem;
     line-height: 1.45;
   }
+}
+
+.post:hover .title h5{
+  color: var(--color-strong-red);
 }
 
 /* Post Footer: Label on left, Date on right */
