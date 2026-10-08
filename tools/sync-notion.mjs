@@ -385,17 +385,19 @@ async function sync() {
         "",
       ];
     } else {
-      // 隨筆文章屬性：title, date, category, summary
-      const summary =
+      // 隨筆文章屬性：title, date, category, description
+      const description =
+        extractPlainText(props["Description"]) ||
+        extractPlainText(props["description"]) ||
         extractPlainText(props["Summary"]) ||
         extractPlainText(props["summary"]) ||
         extractPlainText(props["摘要"]) ||
         "";
 
-      const formattedSummary = summary
-        ? summary.includes("\n") || summary.includes(":")
-          ? JSON.stringify(summary)
-          : summary
+      const formattedDesc = description
+        ? description.includes("\n") || description.includes(":")
+          ? JSON.stringify(description)
+          : description
         : "";
 
       frontmatterLines = [
@@ -403,7 +405,7 @@ async function sync() {
         `title: ${title}`,
         `date: ${dateVal}`,
         category ? `category: ${category}` : null,
-        formattedSummary ? `summary: ${formattedSummary}` : null,
+        formattedDesc ? `description: ${formattedDesc}` : null,
         `notion_id: ${notionId}`,
         `last_edited_time: "${page.last_edited_time}"`,
         "---",

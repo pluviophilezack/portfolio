@@ -92,6 +92,7 @@ export function parseBlogMarkdown(rawContent = '', filePath = '', imageMap = {})
     timestamp,
     category: category || '隨筆',
     summary,
+    description: summary,
     cover,
     body,
     filePath,

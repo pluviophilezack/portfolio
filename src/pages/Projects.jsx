@@ -35,11 +35,13 @@ export default function Projects() {
     return list;
   }, []);
 
-  // Categories list: '全部' plus placeholder 'A', 'B', 'C' and any dynamic categories
+  // Categories list: '全部' plus dynamic categories from projects
   const categories = useMemo(() => {
-    const defaultCategories = ['全部', 'A', 'B', 'C'];
-    const dataCategories = allProjects.map((p) => p.category).filter(Boolean);
-    return Array.from(new Set([...defaultCategories, ...dataCategories]));
+    const set = new Set();
+    allProjects.forEach((p) => {
+      if (p.category) set.add(p.category);
+    });
+    return ['全部', ...Array.from(set)];
   }, [allProjects]);
 
   // Filter projects by category
@@ -68,50 +70,44 @@ export default function Projects() {
         ))}
       </div>
 
-      {/* Projects Stack (Proposal 1: Horizontal Split Card) */}
-      {filteredProjects.length > 0 ? (
-        <ul className={styles.project_stack}>
-          {filteredProjects.map((project) => (
-            <li key={project.slug}>
-              <Link to={`/projects/${project.slug}`} className={styles.card_link}>
-                <div className={styles.project_card}>
-                  {/* Left Column: Image */}
-                  <div className={styles.img_wrapper}>
-                    <img
-                      src={project.cover}
-                      alt={project.title}
-                      className={styles.project_img}
-                      loading="lazy"
-                    />
-                  </div>
-
-                  {/* Right Column: Information */}
-                  <div className={styles.content_wrapper}>
-                    {/* Top Meta: Category & Date */}
-                    <div className={styles.meta_row}>
-                      <span className={styles.category_badge}>{project.category}</span>
-                      <span className={styles.date}>{project.date}</span>
-                    </div>
-
-                    {/* Middle Section: Title & Description */}
-                    <div className={styles.body_section}>
-                      <h4 className={styles.title}>{project.title}</h4>
-                      <p className={styles.description}>{project.description}</p>
-                    </div>
-
-                    {/* Bottom Action Hint: 保留撐開空間與灰色虛線 */}
-                    <div className={styles.action_bar} />
-                  </div>
+    {/* Projects Stack (Proposal 1: Horizontal Split Card) */}
+      <ul className={styles.project_stack}>
+        {filteredProjects.map((project) => (
+          <li key={project.slug}>
+            <Link to={`/projects/${project.slug}`} className={styles.card_link}>
+              <div className={styles.project_card}>
+                {/* Left Column: Image */}
+                <div className={styles.img_wrapper}>
+                  <img
+                    src={project.cover}
+                    alt={project.title}
+                    className={styles.project_img}
+                    loading="lazy"
+                  />
                 </div>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <div className={styles.empty_state}>
-          <p>此分類目前尚無專案項目</p>
-        </div>
-      )}
+
+                {/* Right Column: Information */}
+                <div className={styles.content_wrapper}>
+                  {/* Top Meta: Category & Date */}
+                  <div className={styles.meta_row}>
+                    <span className={styles.category_badge}>{project.category}</span>
+                    <span className={styles.date}>{project.date}</span>
+                  </div>
+
+                  {/* Middle Section: Title & Description */}
+                  <div className={styles.body_section}>
+                    <h4 className={styles.title}>{project.title}</h4>
+                    <p className={styles.description}>{project.description}</p>
+                  </div>
+
+                  {/* Bottom Action Hint: 保留撐開空間與灰色虛線 */}
+                  <div className={styles.action_bar} />
+                </div>
+              </div>
+            </Link>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

@@ -2,8 +2,8 @@
 title: 再訪
 date: 2025-06-16
 category: 字絮
-summary: 
 notion_id: 3f3f2a3a34dd80a18031d8bd6239912d
+last_edited_time: "2026-10-08T03:33:00.000Z"
 ---
 
 夜長夢多，無可奈何之際。我決定在五更時動身，再訪紫花酢漿草滿佈的小徑。

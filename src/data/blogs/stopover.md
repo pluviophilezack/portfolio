@@ -2,8 +2,8 @@
 title: 處所
 date: 2023-06-25
 category: 字絮
-summary: 
 notion_id: 3f2f2a3a34dd8053bf8cee7da5e16e2b
+last_edited_time: "2026-10-07T17:31:00.000Z"
 ---
 
 趕在下午五點離宿辦理時間結束之前，匆忙慌亂地把床墊、行李箱和一大堆雜物丟到走廊，待志工檢查完房間，我旋即把門鎖上，沒來得及再看一眼。

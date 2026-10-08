@@ -2,8 +2,8 @@
 title: 火車
 date: 2023-08-31
 category: 字絮
-summary: 
 notion_id: 3f2f2a3a34dd80c9ae37e5c89ac3c61f
+last_edited_time: "2026-10-08T03:29:00.000Z"
 ---
 
 我酷愛火車旅途中封閉凝滯的時空
