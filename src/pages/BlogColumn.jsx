@@ -3,6 +3,7 @@ import { useState, useRef, useEffect, useMemo } from 'react';
 import ReactMarkdown from 'react-markdown';
 import style from './BlogColumn.module.css';
 import { parseBlogMarkdown } from '../utils/parseBlogMarkdown';
+import { markdownComponents } from '../components/MarkdownRenderer';
 
 // Eagerly glob all markdown files from data/blogs
 const blog_markdowns = import.meta.glob(
@@ -85,7 +86,7 @@ export default function BlogColumn() {
           &larr; 返回 Blog 列表
         </Link>
         <h2>找不到該文章</h2>
-        <p>該文章可能已被移除或路徑不正確。</p>
+        <p>該文章已移除</p>
       </div>
     );
   }
@@ -130,7 +131,7 @@ export default function BlogColumn() {
         {/* Markdown Content */}
         {currentPost.body && (
           <article className={style.markdown}>
-            <ReactMarkdown>
+            <ReactMarkdown components={markdownComponents}>
               {currentPost.body}
             </ReactMarkdown>
           </article>

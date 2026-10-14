@@ -4,6 +4,7 @@ import ReactMarkdown from 'react-markdown';
 import style from './ProjectColumn.module.css';
 import { parseProjectMarkdown } from '../utils/parseProjectMarkdown';
 import KineticBadge from '../components/KineticBadge';
+import { markdownComponents } from '../components/MarkdownRenderer';
 
 // Eagerly glob all markdown files from data/projects
 const project_markdowns = import.meta.glob(
@@ -131,12 +132,14 @@ export default function ProjectColumn() {
         {/* Content */}
         <article className={style.markdown}>
           {currentProject.body && (
-            <ReactMarkdown>{currentProject.body}</ReactMarkdown>
+            <ReactMarkdown components={markdownComponents}>
+              {currentProject.body}
+            </ReactMarkdown>
           )}
         </article>
 
         {/* External Link Kinetic Badge */}
-        {currentProject.externalUrl && (
+        {currentProject.externalUrl && currentProject.externalUrl.toLowerCase() !== 'null' && (
           <KineticBadge
             href={currentProject.externalUrl}
             text={
