@@ -4,9 +4,9 @@ date: 2026-06-22
 category: 研究工具
 description: 學習動機與學習策略量表（Motivated Strategies for Learning Questionnaire）簡稱 MSLQ，適合評估大學學生對於一門課的學習動機以及學習策略是否良好，並從量表獲得特定面向的學習建議。本專案提供數位化的題目資料與圖表，便於教育研究者或個人施測使用。
 external_link: https://docs.google.com/spreadsheets/d/1TLjo7dOumcc6O_zT91m4REnB2VplgxV9n-e373UH1z0/edit?usp=sharing
-link_describe: Test Your Motivated Strategies  •  
+link_describe: Measure Motivated Strategies  •  
 notion_id: 3fcf2a3a34dd8043bedffdea0166267c
-last_edited_time: "2026-10-17T09:19:00.000Z"
+last_edited_time: "2026-10-17T09:41:00.000Z"
 ---
 
 # 量表介紹
