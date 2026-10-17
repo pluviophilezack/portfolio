@@ -1,3 +1,5 @@
+import { fixMarkdownTables } from './parseProjectMarkdown';
+
 /**
  * Parse frontmatter and content from raw markdown string
  */
@@ -84,6 +86,9 @@ export function parseBlogMarkdown(rawContent = '', filePath = '', imageMap = {})
       cover = imageMap[matchedKey];
     }
   }
+
+  // Fix broken markdown table rows caused by Notion cell newlines
+  body = fixMarkdownTables(body);
 
   return {
     slug,

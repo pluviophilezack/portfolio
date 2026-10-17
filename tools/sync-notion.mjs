@@ -89,6 +89,91 @@ n2m.setCustomTransformer("image", async (block) => {
   await downloadInlineImage(rawUrl, filename);
   return `![image](/images/notion-${block.id}.webp)`;
 });
+// 修復 Notion 表格轉 Markdown 時因儲存格換行造成的斷行問題
+function fixMarkdownTables(content = "") {
+  if (!content || !content.includes("|")) return content;
+
+  const lines = content.split("\n");
+  const result = [];
+  let inTable = false;
+  let currentRow = "";
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    const trimmed = line.trim();
+
+    const isSeparator = /^\|?(\s*:?-+:?\s*\|)+\s*:?-+:?\s*\|?$/.test(trimmed);
+    const startsWithPipe = trimmed.startsWith("|");
+    const endsWithPipe = trimmed.endsWith("|");
+
+    if (isSeparator) {
+      inTable = true;
+      if (currentRow) {
+        result.push(currentRow);
+        currentRow = "";
+      }
+      result.push(line);
+      continue;
+    }
+
+    if (inTable) {
+      if (!trimmed) {
+        inTable = false;
+        if (currentRow) {
+          result.push(currentRow);
+          currentRow = "";
+        }
+        result.push(line);
+        continue;
+      }
+
+      if (startsWithPipe) {
+        if (currentRow) {
+          result.push(currentRow);
+          currentRow = "";
+        }
+        if (endsWithPipe) {
+          result.push(line);
+        } else {
+          currentRow = line;
+        }
+      } else {
+        if (currentRow) {
+          currentRow = `${currentRow}<br />${trimmed}`;
+          if (endsWithPipe) {
+            result.push(currentRow);
+            currentRow = "";
+          }
+        } else {
+          inTable = false;
+          result.push(line);
+        }
+      }
+    } else {
+      if (startsWithPipe) {
+        if (endsWithPipe) {
+          result.push(line);
+        } else {
+          currentRow = line;
+        }
+      } else if (currentRow) {
+        currentRow = `${currentRow}<br />${trimmed}`;
+        if (endsWithPipe) {
+          result.push(currentRow);
+          currentRow = "";
+        }
+      } else {
+        result.push(line);
+      }
+    }
+  }
+
+  if (currentRow) {
+    result.push(currentRow);
+  }
+
+  return result.join("\n");
+}
 
 // 提取屬性值的輔助函式
 function extractPlainText(property) {
@@ -417,7 +502,7 @@ async function sync() {
       .filter((line) => line !== null)
       .join("\n");
 
-    const fullContent = `${frontmatter}${mdString ? mdString + "\n" : ""}`;
+    const fullContent = fixMarkdownTables(`${frontmatter}${mdString ? mdString + "\n" : ""}`);
 
     // 如果原先舊檔檔名不同，先清理舊檔
     if (localSyncedItems.has(notionId)) {

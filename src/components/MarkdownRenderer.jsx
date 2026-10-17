@@ -119,6 +119,11 @@ export function MarkdownCodeRenderer({ node, inline, className, children, ...pro
 
 export const markdownComponents = {
   code: MarkdownCodeRenderer,
+  table: ({ children, ...props }) => (
+    <div style={{ width: '100%', overflowX: 'auto', margin: '2rem 0' }}>
+      <table {...props}>{children}</table>
+    </div>
+  ),
 };
 
 export default markdownComponents;

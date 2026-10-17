@@ -1,6 +1,8 @@
 import { useParams, Link } from 'react-router-dom';
 import { useState, useRef, useEffect, useMemo } from 'react';
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 import style from './ProjectColumn.module.css';
 import { parseProjectMarkdown } from '../utils/parseProjectMarkdown';
 import KineticBadge from '../components/KineticBadge';
@@ -132,7 +134,11 @@ export default function ProjectColumn() {
         {/* Content */}
         <article className={style.markdown}>
           {currentProject.body && (
-            <ReactMarkdown components={markdownComponents}>
+            <ReactMarkdown
+              components={markdownComponents}
+              remarkPlugins={[remarkGfm]}
+              rehypePlugins={[rehypeRaw]}
+            >
               {currentProject.body}
             </ReactMarkdown>
           )}

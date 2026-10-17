@@ -1,6 +1,8 @@
 import { useParams, Link } from 'react-router-dom';
 import { useState, useRef, useEffect, useMemo } from 'react';
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 import style from './BlogColumn.module.css';
 import { parseBlogMarkdown } from '../utils/parseBlogMarkdown';
 import { markdownComponents } from '../components/MarkdownRenderer';
@@ -131,7 +133,11 @@ export default function BlogColumn() {
         {/* Markdown Content */}
         {currentPost.body && (
           <article className={style.markdown}>
-            <ReactMarkdown components={markdownComponents}>
+            <ReactMarkdown
+              components={markdownComponents}
+              remarkPlugins={[remarkGfm]}
+              rehypePlugins={[rehypeRaw]}
+            >
               {currentPost.body}
             </ReactMarkdown>
           </article>

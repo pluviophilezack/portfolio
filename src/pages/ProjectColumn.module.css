@@ -269,6 +269,32 @@
   text-decoration: underline var(--color-strong-red);
 }
 
+/* Markdown tables */
+.markdown table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.markdown th,
+.markdown td {
+  border: 1px solid black;
+  padding: 10px 14px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.markdown th {
+  background-color: var(--color-bg-day, #f7f7f7);
+  font-weight: 600;
+}
+
+.markdown tr:nth-child(even) td {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
 /* Switch Navigation (prev / next) */
 .switch {
   display: flex;

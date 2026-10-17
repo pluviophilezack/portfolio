@@ -106,6 +106,9 @@ export function parseProjectMarkdown(rawContent = '', filePath = '', imageMap = 
     }
   }
 
+  // Fix broken markdown table rows caused by Notion cell newlines
+  body = fixMarkdownTables(body);
+
   return {
     slug,
     title,
@@ -119,6 +122,95 @@ export function parseProjectMarkdown(rawContent = '', filePath = '', imageMap = 
     body,
     filePath,
   };
+}
+
+/**
+ * Reconnect broken table rows where Notion cell contents contain newlines
+ */
+export function fixMarkdownTables(content = '') {
+  if (!content || !content.includes('|')) return content;
+
+  const lines = content.split('\n');
+  const result = [];
+  let inTable = false;
+  let currentRow = '';
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    const trimmed = line.trim();
+
+    // Check if line looks like a table separator: | --- | --- |
+    const isSeparator = /^\|?(\s*:?-+:?\s*\|)+\s*:?-+:?\s*\|?$/.test(trimmed);
+    const startsWithPipe = trimmed.startsWith('|');
+    const endsWithPipe = trimmed.endsWith('|');
+
+    if (isSeparator) {
+      inTable = true;
+      if (currentRow) {
+        result.push(currentRow);
+        currentRow = '';
+      }
+      result.push(line);
+      continue;
+    }
+
+    if (inTable) {
+      if (!trimmed) {
+        inTable = false;
+        if (currentRow) {
+          result.push(currentRow);
+          currentRow = '';
+        }
+        result.push(line);
+        continue;
+      }
+
+      if (startsWithPipe) {
+        if (currentRow) {
+          result.push(currentRow);
+          currentRow = '';
+        }
+        if (endsWithPipe) {
+          result.push(line);
+        } else {
+          currentRow = line;
+        }
+      } else {
+        if (currentRow) {
+          currentRow = `${currentRow}<br />${trimmed}`;
+          if (endsWithPipe) {
+            result.push(currentRow);
+            currentRow = '';
+          }
+        } else {
+          inTable = false;
+          result.push(line);
+        }
+      }
+    } else {
+      if (startsWithPipe) {
+        if (endsWithPipe) {
+          result.push(line);
+        } else {
+          currentRow = line;
+        }
+      } else if (currentRow) {
+        currentRow = `${currentRow}<br />${trimmed}`;
+        if (endsWithPipe) {
+          result.push(currentRow);
+          currentRow = '';
+        }
+      } else {
+        result.push(line);
+      }
+    }
+  }
+
+  if (currentRow) {
+    result.push(currentRow);
+  }
+
+  return result.join('\n');
 }
 
 export default parseProjectMarkdown;
