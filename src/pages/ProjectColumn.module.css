@@ -248,8 +248,9 @@
 
 .markdown hr {
   border: 0;
-  height: 1px;
-  background: black;
+  border-top: 1px solid lightgray;
+  height: 0;
+  background: transparent;
   margin: 2.5rem 0;
 }
 

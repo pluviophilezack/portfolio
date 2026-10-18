@@ -250,8 +250,9 @@
 
 .markdown hr {
   border: 0;
-  height: 1px;
-  background: black;
+  border-top: 1px solid lightgray;
+  height: 0;
+  background: transparent;
   margin: 2.5rem 0;
 }
 
@@ -327,12 +328,11 @@
 .switch_right:hover {
   background-color: var(--color-strong-red);
   border: 1px solid var(--color-strong-red);
-  color: var(--color-text-night);
 }
 
 .switch_left:hover .switch_title,
 .switch_right:hover .switch_title {
-  color: var(--color-text-night);
+  color: var(--color-bg-day);
 }
 
 .switch_right {
@@ -341,21 +341,29 @@
   align-items: flex-end;
 }
 
+.switch_left:hover .switch_arrow,
+.switch_right:hover .switch_arrow {
+  color: var(--color-strong-red);
+}
+
 .switch_arrow {
   font-family: var(--font-sans);
-  color: var(--color-text-light-gray);
+  color: var(--color-text-day);
   font-weight: 400;
-  font-size: 1.15rem;
+  font-size: 0.95rem;
   margin-bottom: 6px;
   display: block;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
 }
 
 .switch_title {
-  font-family: var(--font-serif, "Noto Serif TC", serif);
-  font-size: 1.15rem;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
   font-weight: 400;
   color: var(--color-text-day, #313131);
   transition: color 0.2s ease;
+  text-decoration: underline;
+  text-underline-offset: 5px;
 }
 
 /* Lightbox Modal */

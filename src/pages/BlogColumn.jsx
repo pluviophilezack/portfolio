@@ -147,7 +147,7 @@ export default function BlogColumn() {
         <div className={style.switch}>
           {prevPost ? (
             <Link to={`/blogs/${prevPost.slug}`} className={style.switch_left}>
-              <span className={style.switch_arrow}>較新一篇</span>
+              <span className={style.switch_arrow}>&larr; 上一篇</span>
               <span className={style.switch_title}>{prevPost.title}</span>
             </Link>
           ) : (
@@ -156,7 +156,7 @@ export default function BlogColumn() {
 
           {nextPost ? (
             <Link to={`/blogs/${nextPost.slug}`} className={style.switch_right}>
-              <span className={style.switch_arrow}>較舊一篇</span>
+              <span className={style.switch_arrow}>下一篇 &rarr;</span>
               <span className={style.switch_title}>{nextPost.title}</span>
             </Link>
           ) : (
