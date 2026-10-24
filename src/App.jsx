@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Analytics } from "@vercel/analytics/next"
 import './App.css';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -26,6 +27,7 @@ function App() {
         <Route path="/blog/:slug" element={<Box><BlogColumn /></Box>} />
       </Routes>
       <Footer/>
+      <Analytics/>
     </BrowserRouter>
   )
 }
